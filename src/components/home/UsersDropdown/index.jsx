@@ -8,7 +8,6 @@ import {usersSelector} from "redux/selectors";
 export default function UsersDropdown() {
   const dispatch = useDispatch();
   const users  = useSelector(usersSelector);
-  console.log(users)
 
   const onClickHandler = event => {
     if (Number(event.target.value) !== -1) {
