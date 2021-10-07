@@ -8,8 +8,11 @@ import { useLocalStorage } from 'hooks/SHARED';
 import { Header } from 'styles/SHARED';
 import InfoPopup from 'components/SHARED/InfoPopup/index';
 import {useDispatch, useSelector} from "react-redux";
+import {setUsers} from "redux/userSlice";
+import {openPopupMessage} from "redux/popupSlice";
 import {popupMessageOpenedSelector, popupOpenedSelector} from "redux/selectors";
-import {setIsMessagePopupOpened, setUsers} from "redux/actions";
+
+
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -36,7 +39,7 @@ export default function Home() {
           setLocalStorageValue(usersExtended);
           dispatch(setUsers(usersExtended));
         } catch (error) {
-          dispatch(setIsMessagePopupOpened(true))
+          dispatch(openPopupMessage())
         }
       }
 

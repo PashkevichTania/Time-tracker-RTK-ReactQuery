@@ -11,7 +11,8 @@ import {
 } from './styled';
 import {useDispatch, useSelector} from "react-redux";
 import {currentUserSelector} from "redux/selectors";
-import {setIsPopupOpened, updateUser} from "redux/actions";
+import {closePopup, openPopup} from "redux/popupSlice";
+import {updateUser} from "redux/userSlice";
 
 export default function TrackPopup() {
   const dispatch = useDispatch();
@@ -47,11 +48,11 @@ export default function TrackPopup() {
     const localStorageUsers = localStorageValue;
     localStorageUsers.splice(currentUser.indexArray, 1, updatedUser);
     setLocalStorageValue(localStorageUsers);
-    dispatch(setIsPopupOpened(false));
+    dispatch(closePopup());
   };
 
   return (
-    <Wrapper onClick={() => dispatch(setIsPopupOpened(false))}>
+    <Wrapper onClick={() => dispatch(openPopup())}>
       <Frame onClick={e => e.stopPropagation()}>
         <Header>Track User</Header>
 
@@ -94,7 +95,7 @@ export default function TrackPopup() {
         </Body>
 
         <Footer>
-          <Button color="#ffbaba" onClick={() => dispatch(setIsPopupOpened(false))}>
+          <Button color="#ffbaba" onClick={() => dispatch(openPopup())}>
             &#10005;
           </Button>
           <Button color="#95dea8" onClick={onSaveClickHandler}>

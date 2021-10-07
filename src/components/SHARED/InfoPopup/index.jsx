@@ -1,12 +1,12 @@
 import { Body, Button, Footer, Frame, Header, Wrapper } from './styled';
 import {useDispatch} from "react-redux";
-import {setIsMessagePopupOpened} from "redux/actions";
+import {openPopupMessage} from "redux/popupSlice";
 
 export default function InfoPopup({ message }) {
   const dispatch = useDispatch();
 
   const onClosePopupHandler = () => {
-    dispatch(setIsMessagePopupOpened(false));
+    dispatch(openPopupMessage());
   };
 
   return (
