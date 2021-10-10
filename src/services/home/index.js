@@ -7,6 +7,6 @@ export const getUsersAPI = async () => {
 
     return users;
   } catch (error) {
-    console.log(error);
+    throw new Error(error);
   }
 };
