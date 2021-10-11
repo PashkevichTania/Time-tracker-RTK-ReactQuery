@@ -11,6 +11,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {setUsers} from "redux/userSlice";
 import {openPopupMessage} from "redux/popupSlice";
 import {popupMessageOpenedSelector, popupOpenedSelector} from "redux/selectors";
+import {fetchUsers} from "redux/apiSlice";
 
 
 
@@ -22,6 +23,11 @@ export default function Home() {
     '_TRACK-APP_',
     null
   );
+
+  useEffect(()=>{
+    dispatch(fetchUsers())
+  },[])
+
 
   useEffect(() => {
     (async () => {
